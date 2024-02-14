@@ -1,6 +1,5 @@
 package ru.kowqo.course999
 
-
 interface UiObservable<T : Any> : UiUpdate<T> {
     fun updateObserver(uiObserver: UiObserver<T> = UiObserver.Empty())
 
@@ -31,7 +30,7 @@ interface UiObservable<T : Any> : UiUpdate<T> {
     }
 }
 
-fun interface UiUpdate<T : Any> {
+interface UiUpdate<T : Any> {
     fun invoke(data: T)
 }
 

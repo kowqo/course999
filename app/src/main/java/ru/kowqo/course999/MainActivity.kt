@@ -1,13 +1,10 @@
 package ru.kowqo.course999
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
-import org.w3c.dom.Text
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var mainRepresentative: MainRepresentative
     private lateinit var textView: TextView
 
@@ -20,10 +17,8 @@ class MainActivity : AppCompatActivity() {
         mainRepresentative = (application as MyApplication).mainRepresentative
 
         textView.setOnClickListener {
-            Log.d("qwe", "sdsaas")
-            mainRepresentative.startAsync()
+            mainRepresentative.startAsync("Hello from thread")
         }
-
     }
 
     override fun onResume() {
@@ -32,8 +27,7 @@ class MainActivity : AppCompatActivity() {
             object : ActivityCallback {
                 override fun invoke(data: String) =
                     runOnUiThread {
-                        Log.d("qwe", "here")
-                        textView.text = "21321321321"
+                        textView.text = data
                     }
             },
         )
