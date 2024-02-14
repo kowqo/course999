@@ -7,18 +7,24 @@ class MyApplication : Application() {
 
     private val handleDeath = HandleDeath.Base()
 
+    lateinit var mainRepresentative: MainRepresentative
+
+    override fun onCreate() {
+        super.onCreate()
+        mainRepresentative = MainRepresentative.Base(UiObservable.Single())
+    }
 
     fun activityCreated(firstOpening: Boolean) {
         if (firstOpening) {
             handleDeath.firstOpening()
-            Log.d("kow","First Time")
+            Log.d("kowA", "First Time")
         } else {
             if (handleDeath.wasDeathHappened()) {
-                Log.d("kow", "Death happened")
+                Log.d("kowA", "Death happened")
                 handleDeath.handleDeath()
             } else {
 
-                Log.d("kow", "just activity recreated")
+                Log.d("kowA", "just activity recreated")
             }
         }
     }
