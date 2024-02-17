@@ -1,9 +1,7 @@
-package ru.kowqo.course999
+package ru.kowqo.course999.core
 
-interface UiObservable<T : Any> : UiUpdate<T> {
-    fun updateObserver(uiObserver: UiObserver<T> = UiObserver.Empty())
-
-    class Single<T : Any> : UiObservable<T> {
+interface UiObservable<T : Any> : UiUpdate<T>, UpdateObserver<T> {
+    abstract class Single<T : Any> : UiObservable<T> {
         private var cache: T? = null
 
         private var observer: UiObserver<T> = UiObserver.Empty()
@@ -32,6 +30,10 @@ interface UiObservable<T : Any> : UiUpdate<T> {
 
 interface UiUpdate<T : Any> {
     fun invoke(data: T)
+}
+
+interface UpdateObserver<T : Any> {
+    fun updateObserver(uiObserver: UiObserver<T> = UiObserver.Empty())
 }
 
 interface UiObserver<T : Any> : UiUpdate<T> {

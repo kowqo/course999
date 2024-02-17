@@ -1,7 +1,6 @@
-package ru.kowqo.course999
+package ru.kowqo.course999.core
 
 interface HandleDeath {
-
     fun firstOpening()
 
     fun handleDeath()
@@ -9,7 +8,6 @@ interface HandleDeath {
     fun wasDeathHappened(): Boolean
 
     class Base : HandleDeath {
-
         private var deathHappened = true
 
         override fun handleDeath() {

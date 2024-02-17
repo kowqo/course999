@@ -1,10 +1,10 @@
-package ru.kowqo.course999
+package ru.kowqo.course999.core
 
 import android.app.Application
 import android.util.Log
+import ru.kowqo.course999.main.MainRepresentative
 
 class MyApplication : Application() {
-
     private val handleDeath = HandleDeath.Base()
 
     lateinit var mainRepresentative: MainRepresentative
@@ -17,14 +17,13 @@ class MyApplication : Application() {
     fun activityCreated(firstOpening: Boolean) {
         if (firstOpening) {
             handleDeath.firstOpening()
-            Log.d("kowA", "First Time")
+            Log.d("qwe", "First Time")
         } else {
             if (handleDeath.wasDeathHappened()) {
-                Log.d("kowA", "Death happened")
+                Log.d("qwe", "Death happened")
                 handleDeath.handleDeath()
             } else {
-
-                Log.d("kowA", "just activity recreated")
+                Log.d("qwe", "just activity recreated")
             }
         }
     }
