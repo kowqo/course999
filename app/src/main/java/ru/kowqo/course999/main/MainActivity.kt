@@ -3,10 +3,11 @@ package ru.kowqo.course999.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.kowqo.course999.R
-import ru.kowqo.course999.core.MyApplication
+import ru.kowqo.course999.core.ProvideRepresentative
+import ru.kowqo.course999.core.Represantative
 import ru.kowqo.course999.core.UiObserver
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ProvideRepresentative {
     private lateinit var mainRepresentative: MainRepresentative
     private lateinit var activityCallback: ActivityCallback
 
@@ -14,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mainRepresentative = (application as MyApplication).mainRepresentative
+        mainRepresentative = provideRepresentative(MainRepresentative::class.java)
 
         mainRepresentative.showDashboard(savedInstanceState == null)
 
@@ -35,6 +36,10 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         mainRepresentative.stopGettingUpdates()
+    }
+
+    override fun <T : Represantative<*>> provideRepresentative(clazz: Class<T>): T {
+        return (application as ProvideRepresentative).provideRepresentative(clazz)
     }
 }
 

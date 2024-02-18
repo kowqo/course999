@@ -17,7 +17,7 @@ interface Screen {
             containerId: Int,
         ) {
             fragmentManager.beginTransaction()
-                .add(containerId, fragmentClass.getDeclaredConstructor().newInstance())
+                .replace(containerId, fragmentClass.getDeclaredConstructor().newInstance())
                 .addToBackStack(fragmentClass.name)
                 .commit()
         }
