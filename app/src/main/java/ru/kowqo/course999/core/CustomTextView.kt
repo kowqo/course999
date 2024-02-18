@@ -3,8 +3,9 @@ package ru.kowqo.course999.core
 import android.content.Context
 import android.os.Parcelable
 import android.util.AttributeSet
+import android.view.View
 
-class CustomTextView : androidx.appcompat.widget.AppCompatTextView {
+class CustomTextView : androidx.appcompat.widget.AppCompatTextView, HideAndShow {
     constructor(context: Context) : super(
         context,
     )
@@ -29,10 +30,19 @@ class CustomTextView : androidx.appcompat.widget.AppCompatTextView {
     }
 
     override fun onRestoreInstanceState(state: Parcelable?) {
-        val progressState = state as VisibilityState?
         super.onRestoreInstanceState(state)
-        progressState?.let {
+        val visibilityState = state as VisibilityState?
+
+        visibilityState?.let {
             visibility = it.visible
         }
+    }
+
+    override fun show() {
+        visibility = View.VISIBLE
+    }
+
+    override fun hide() {
+        visibility = View.GONE
     }
 }

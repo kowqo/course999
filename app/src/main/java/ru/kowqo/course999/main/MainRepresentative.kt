@@ -2,6 +2,7 @@ package ru.kowqo.course999.main
 
 import ru.kowqo.course999.core.Represantative
 import ru.kowqo.course999.core.UiObserver
+import ru.kowqo.course999.dashboard.DashboardScreen
 
 interface MainRepresentative : Represantative<Screen> {
     fun showDashboard(firstTime: Boolean)
@@ -17,7 +18,7 @@ interface MainRepresentative : Represantative<Screen> {
 
         override fun showDashboard(firstTime: Boolean) {
             if (firstTime) {
-                navigation.invoke(Screen.Dashboard)
+                navigation.invoke(DashboardScreen)
             }
         }
     }

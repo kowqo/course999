@@ -11,8 +11,10 @@ import java.lang.IllegalStateException
 interface ProvideRepresentative {
     fun <T : Represantative<*>> provideRepresentative(clazz: Class<T>): T
 
-    class Factory(private val core: Core, private val clear: ClearRepresentative) :
-        ProvideRepresentative {
+    class Factory(
+        private val core: Core,
+        private val clear: ClearRepresentative,
+    ) : ProvideRepresentative {
         override fun <T : Represantative<*>> provideRepresentative(clazz: Class<T>): T =
             when (clazz) {
                 MainRepresentative::class.java -> MainModule(core).representative()

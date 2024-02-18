@@ -1,33 +1,14 @@
 package ru.kowqo.course999.subscription
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.Fragment
 import ru.kowqo.course999.R
-import ru.kowqo.course999.core.ProvideRepresentative
+import ru.kowqo.course999.main.BaseFragment
 
-class SubscriptionFragment : Fragment() {
-    private lateinit var representative: SubscriptionRepresentative
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        representative =
-            (requireActivity() as ProvideRepresentative).provideRepresentative(
-                SubscriptionRepresentative::class.java,
-            )
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.fragment_subscription, container, false)
-    }
+class SubscriptionFragment :
+    BaseFragment<SubscriptionRepresentative>(R.layout.fragment_subscription) {
+    override val clazz = SubscriptionRepresentative::class.java
 
     override fun onViewCreated(
         view: View,

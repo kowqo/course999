@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent">
 
-    <TextView
+    <ru.kowqo.course999.core.CustomTextView
         android:id="@+id/showPlayingTextView"
         android:text="@string/playing"
         android:gravity="center"
@@ -15,8 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
+    <ru.kowqo.course999.core.CustomButton
         android:id="@+id/playButton"
+        style="@style/Widget.Material3.Button.ElevatedButton"
         android:text="@string/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

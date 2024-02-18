@@ -1,35 +1,16 @@
 package ru.kowqo.course999.dashboard
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import androidx.fragment.app.Fragment
 import ru.kowqo.course999.R
-import ru.kowqo.course999.core.ProvideRepresentative
+import ru.kowqo.course999.core.CustomButton
+import ru.kowqo.course999.core.CustomTextView
 import ru.kowqo.course999.core.UiObserver
+import ru.kowqo.course999.main.BaseFragment
 
-class DashboardFragment : Fragment() {
-    private lateinit var representative: DashboardRepresentative
+class DashboardFragment : BaseFragment<DashboardRepresentative>(R.layout.fragment_dashboard) {
     private lateinit var callback: UiObserver<PremiumDashboardUiState>
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        representative =
-            (requireActivity() as ProvideRepresentative).provideRepresentative(
-                DashboardRepresentative::class.java,
-            )
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
-    }
+    override val clazz: Class<DashboardRepresentative> = DashboardRepresentative::class.java
 
     override fun onViewCreated(
         view: View,
@@ -37,8 +18,8 @@ class DashboardFragment : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        val button = view.findViewById<Button>(R.id.playButton)
-        val textView = view.findViewById<TextView>(R.id.showPlayingTextView)
+        val button = view.findViewById<CustomButton>(R.id.playButton)
+        val textView = view.findViewById<CustomTextView>(R.id.showPlayingTextView)
         button.setOnClickListener {
             representative.play()
         }

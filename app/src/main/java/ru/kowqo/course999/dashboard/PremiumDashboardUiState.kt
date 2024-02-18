@@ -1,22 +1,20 @@
 package ru.kowqo.course999.dashboard
 
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
+import ru.kowqo.course999.core.HideAndShow
 
 interface PremiumDashboardUiState {
     fun show(
-        button: Button,
-        textView: TextView,
+        button: HideAndShow,
+        textView: HideAndShow,
     )
 
     object Playing : PremiumDashboardUiState {
         override fun show(
-            button: Button,
-            textView: TextView,
+            button: HideAndShow,
+            textView: HideAndShow,
         ) {
-            button.visibility = View.GONE
-            textView.visibility = View.VISIBLE
+            button.hide()
+            textView.show()
         }
     }
 }

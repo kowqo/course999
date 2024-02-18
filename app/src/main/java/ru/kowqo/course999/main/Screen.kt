@@ -2,8 +2,6 @@ package ru.kowqo.course999.main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import ru.kowqo.course999.dashboard.DashboardFragment
-import ru.kowqo.course999.subscription.SubscriptionFragment
 
 interface Screen {
     fun show(
@@ -33,8 +31,4 @@ interface Screen {
                 .commit()
         }
     }
-
-    object Dashboard : Replace(DashboardFragment::class.java)
-
-    object Subscription : Add(SubscriptionFragment::class.java)
 }

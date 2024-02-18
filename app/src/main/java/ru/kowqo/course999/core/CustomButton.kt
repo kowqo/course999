@@ -6,7 +6,7 @@ import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.View
 
-class CustomButton : androidx.appcompat.widget.AppCompatButton {
+class CustomButton : androidx.appcompat.widget.AppCompatButton, HideAndShow {
     constructor(context: Context) : super(
         context,
     )
@@ -31,11 +31,20 @@ class CustomButton : androidx.appcompat.widget.AppCompatButton {
     }
 
     override fun onRestoreInstanceState(state: Parcelable?) {
-        val progressState = state as VisibilityState?
         super.onRestoreInstanceState(state)
-        progressState?.let {
+        val visibilityState = state as VisibilityState?
+
+        visibilityState?.let {
             visibility = it.visible
         }
+    }
+
+    override fun show() {
+        visibility = View.VISIBLE
+    }
+
+    override fun hide() {
+        visibility = View.GONE
     }
 }
 
